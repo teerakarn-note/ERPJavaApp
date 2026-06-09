@@ -1,26 +1,188 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.login-container {
+  @apply min-h-screen flex items-center justify-center
+    bg-gradient-to-br from-purple-900
+    via-blue-900 to-black p-4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.login-box {
+  @apply bg-gradient-to-t from-black/60 to-black/40
+    backdrop-blur-lg rounded-2xl p-10 w-full
+    max-w-[420px] shadow-2xl border border-indigo-500/20;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.login-title {
+  @apply bg-gradient-to-r from-indigo-400 to-purple-400
+    bg-clip-text text-transparent text-4xl font-bold
+    text-center mb-2;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.login-subtitle {
+  @apply text-gray-400 text-center mb-8 text-xl;
+}
+
+.login-form {
+  @apply flex flex-col gap-6;
+}
+
+.form-group {
+  @apply flex flex-col gap-2;
+}
+
+.form-label {
+  @apply text-indigo-200 text-sm font-medium;
+}
+
+.form-input {
+  @apply bg-gradient-to-r from-black/40 to-black/30
+    text-gray-100 rounded-md p-2 border border-indigo-500/30
+    focus:border-indigo-400/50 focus:ring-2 focus:ring-indigo-500/20;
+}
+
+.login-button {
+  @apply bg-gradient-to-r from-indigo-600 to-purple-600 text-white
+    border-none rounded-lg py-3 text-base font-medium cursor-pointer
+    transition-all duration-300 hover:from-indigo-500 hover:to-purple-500
+    active:from-indigo-700 active:to-purple-700;
+}
+
+/* sidebar */
+.sidebar {
+  @apply h-screen w-72 bg-gradient-to-b from-purple-900 via-blue-900 
+    to-black text-white p-6 shadow-2xl;
+}
+
+.sidebar-container {
+  @apply flex flex-col gap-4;
+}
+
+.sidebar-title {
+  @apply text-2xl font-bold mb-6 text-center border border-b-1 border-b-gray-400  
+    border-t-0 border-l-0 border-r-0
+}
+
+.sidebar-title h1 {
+  @apply text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r
+    from-purple-300 to-pink-400;
+}
+
+.sidebar-title .btn-edit {
+  @apply bg-blue-600/80 text-white px-4 py-2 rounded-md text-base font-medium;
+}
+
+.sidebar-title .btn-logout {
+  @apply bg-red-600/80 text-white px-4 py-2 rounded-md text-base font-medium;
+}
+
+.sidebar-nav-list {
+  @apply space-y-3;
+}
+
+.sidebar-nav-link {
+  @apply flex items-center gap-2 cursor-pointer hover:bg-white/30 p-2 rounded-lg;
+}
+
+.sidebar-nav-link-active {
+  @apply flex items-center gap-2 cursor-pointer bg-white/30 p-2 rounded-lg transition-colors;
+}
+
+.button {
+  @apply bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg py-2 px-4;
+}
+
+/** table **/
+.button-add {
+  @apply bg-green-600/80 text-white px-4 py-2 rounded-md text-base font-medium;
+}
+
+.table {
+  @apply w-full;
+}
+
+.table-container {
+  @apply w-full overflow-x-auto shadow-lg rounded-lg;
+}
+
+.table thead {
+  @apply bg-gradient-to-r from-indigo-600 to-purple-600;
+}
+
+.table th {
+  @apply text-left text-white px-6 py-4 text-sm font-semibold tracking-wider;
+}
+
+.table tbody tr {
+  @apply border-b border-gray-200 hover:bg-gray-50 transition-colors;
+}
+
+.table td {
+  @apply px-6 py-4 text-sm text-gray-700 whitespace-nowrap bg-white;
+}
+
+.table-action-btn {
+  @apply px-3 py-1 rounded-md text-xs font-medium;
+}
+
+.table-edit-btn {
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-md
+    hover:from-blue-600 hover:to-blue-700;
+}
+
+.table-delete-btn {
+  @apply bg-gradient-to-r from-red-500 to-red-600 text-white rounded-md
+    hover:from-red-600 hover:to-red-700;
+}
+
+/* modal */
+.modal {
+  @apply fixed inset-0 z-50 flex items-center justify-center;
+  backdrop-filter: blur(8px);
+  @apply bg-black/30;
+}
+
+.modal-container {
+  @apply w-full bg-gray-900/90 rounded-xl shadow-2xl border border-gray-700/50 backdrop-blur-sm ring-1 ring-white/10;
+}
+
+.modal-header {
+  @apply flex items-center justify-between p-4 border-b;
+}
+
+.modal-title {
+  @apply text-lg font-semibold text-gray-400;
+}
+
+.modal-close {
+  @apply text-gray-400 hover:text-gray-600 transition-colors;
+}
+
+.modal-body {
+  @apply p-4;
+}
+
+.modal-body label {
+  @apply block mb-2 text-sm font-medium text-gray-400;
+}
+
+.modal-body input, select {
+  @apply w-full bg-gray-800/50 border border-gray-700/50 rounded-md p-2 text-gray-200;
+}
+
+.modal-footer {
+  @apply flex justify-end gap-2 p-4 border-t;
+}
+
+.modal-btn {
+  @apply px-4 py-2 rounded-md font-medium transition-colors;
+}
+
+.modal-btn-cancel {
+  @apply bg-gradient-to-b from-gray-700 to-gray-900 text-gray-300 hover:from-gray-800 hover:to-gray-950 
+    border border-gray-600 shadow-lg shadow-gray-500/20 transition-all duration-200 ease-in-out;
+}
+
+.modal-btn-submit {
+    @apply bg-gradient-to-b from-emerald-600 to-emerald-800 text-gray-100 hover:from-emerald-700 
+      hover:to-emerald-900 shadow-lg shadow-emerald-500/20 transition-all duration-200 ease-in-out;
 }

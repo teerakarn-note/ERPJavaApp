@@ -1,0 +1,1 @@
+1.สร้างไฟล์ config ที่ floder app -- config.ts
